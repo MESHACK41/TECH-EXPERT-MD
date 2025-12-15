@@ -19,8 +19,8 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx = "*⪛✰ ↫ Lazack Device ↬ ✰⪜*\n\n✐ Sub-Bot Connection Mode QR\n\n✰ With another phone or on your PC, scan this QR to become a *Temporary Sub-Bot*.\n\n\`1\` » Click the three dots in the top right corner\n\n\`2\` » Tap Linked Devices\n\n\`3\` » Scan this QR code to log in with the bot\n\n✧ This QR code expires in 45 seconds!."
-let rtx2 = "*⪛✰ ↫ Lazack Device ↬ ✰⪜*\n\n✐ Sub-Bot Connection Mode Code\n\n✰ Use this Code to become a *Temporary Sub-Bot*.\n\n\`1\` » Click the three dots in the top right corner\n\n\`2\` » Tap Linked Devices\n\n\`3\` » Select Link with phone number\n\n\`4\` » Enter the Code to log in with the bot\n\n✧ It is not recommended to use your main account."
+let rtx = "*⪛✰ ↫ Tech expert Device ↬ ✰⪜*\n\n✐ Sub-Bot Connection Mode QR\n\n✰ With another phone or on your PC, scan this QR to become a *Temporary Sub-Bot*.\n\n\`1\` » Click the three dots in the top right corner\n\n\`2\` » Tap Linked Devices\n\n\`3\` » Scan this QR code to log in with the bot\n\n✧ This QR code expires in 45 seconds!."
+let rtx2 = "*⪛✰ ↫ Tech expert Device ↬ ✰⪜*\n\n✐ Sub-Bot Connection Mode Code\n\n✰ Use this Code to become a *Temporary Sub-Bot*.\n\n\`1\` » Click the three dots in the top right corner\n\n\`2\` » Tap Linked Devices\n\n\`3\` » Select Link with phone number\n\n\`4\` » Enter the Code to log in with the bot\n\n✧ It is not recommended to use your main account."
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -40,18 +40,18 @@ return m.reply(`${emoji2} No available slots for *Sub-Bots* found.`)
 }
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let id = `${who.split`@`[0]}`
-let pathLazackBots = path.join(`./${jadi}/`, id)
-if (!fs.existsSync(pathLazackBots)){
-fs.mkdirSync(pathLazackBots, { recursive: true })
+let pathTechexpertBots = path.join(`./${jadi}/`, id)
+if (!fs.existsSync(pathTechexpertBots)){
+fs.mkdirSync(pathTechexpertBots, { recursive: true })
 }
-yukiJBOptions.pathLazackBots = pathLazackBots
+yukiJBOptions.pathTechexpertBots = pathTechexpertBots
 yukiJBOptions.m = m
 yukiJBOptions.conn = conn
 yukiJBOptions.args = args
 yukiJBOptions.usedPrefix = usedPrefix
 yukiJBOptions.command = command
 yukiJBOptions.fromCommand = true
-LazackBots(yukiJBOptions)
+TechexpertBots(yukiJBOptions)
 global.db.data.users[m.sender].Subs = new Date * 1
 } 
 handler.help = ['qr', 'code']
@@ -59,8 +59,8 @@ handler.tags = ['serbot']
 handler.command = ['bb', 'bc']
 export default handler 
 
-export async function LazackBots(options) {
-let { pathLazackBots, m, conn, args, usedPrefix, command } = options
+export async function TechexpertBots(options) {
+let { path Tech expert Bots, m, conn, args, usedPrefix, command } = options
 if (command === 'bb') {
 command = 'qr'; 
 args.unshift('bc')}
@@ -71,8 +71,8 @@ args[0] = args[0].replace(/^--code$|^code$/, "").trim()
 if (args[1]) args[1] = args[1].replace(/^--code$|^code$/, "").trim()
 if (args[0] == "") args[0] = undefined
 }
-const pathCreds = path.join(pathLazackBots, "creds.json")
-if (!fs.existsSync(pathLazackBots)){
+const pathCreds = path.join(pathTechexpertBots, "creds.json")
+if (!fs.existsSync(pathTechexpertBots)){
 fs.mkdirSync(pathLazackBots, { recursive: true })}
 try {
 args[0] && args[0] != undefined ? fs.writeFileSync(pathCreds, JSON.stringify(JSON.parse(Buffer.from(args[0], "base64").toString("utf-8")), null, '\t')) : ""
