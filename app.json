@@ -1,0 +1,28 @@
+{
+  "name": "Lazack Device",
+  "description": " Whatsapp botz made by team lazack.",
+  "keywords": [
+    "whatsapp bot"
+  ],
+  "repository": "https://github.com/Lazack28/Lazack-Device",
+    "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  }
+}
