@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rockstar-ExtraBold&color=F33A6A&lines=WELCOME+TO+TECH+EXPERT+MD+BOTS+MADE+BY;LAZACK28;THANKS+FOR+VISITING+MY+REPO)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rockstar-ExtraBold&color=F33A6A&lines=WELCOME+TO+TECH+EXPERT+MD+BOTS+MADE+BY;MR+TECH+EXPERT;THANKS+FOR+VISITING+MY+REPO)](https://git.io/typing-svg)
 
 <img src="https://i.imgur.com/dBaSKWF.gif" height="90" width="100%">
 
@@ -12,7 +12,7 @@
 
 ### 🌟 **Join Our Community**
 
-[![Join Group](https://img.shields.io/badge/Join%20WhatsApp%20Group-green?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/IIpL6gf6dcq4ial8gaJLE9)
+[![Join Group](https://img.shields.io/badge/Join%20WhatsApp%20Group-green?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/K0ATMxcydZj0civwVVjvcu)
 
 ---
 
@@ -24,7 +24,7 @@
 
 ### 📞 **Contact the Creator**
 
-<a href="https://lazack.biz.id"><img alt='OWNER' src='https://img.shields.io/badge/GET%20IN%20TOUCH-magenta?style=for-the-badge&logo=opencv&logoColor=white'/></a>
+<a href="vhttps://wa.me/message/J3VJYDUH6ZGYI1"><img alt='OWNER' src='https://img.shields.io/badge/GET%20IN%20TOUCH-magenta?style=for-the-badge&logo=opencv&logoColor=white'/></a>
 
 </div>
 
