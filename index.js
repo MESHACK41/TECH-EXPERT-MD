@@ -1,5 +1,5 @@
 // index.js — updated for Heroku + defensive fixes
-// Keep the general structure and behavior from original Lazack-Device V2
+// Keep the general structure and behavior from original Tech-expert V2
 
 //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0' // allow TLS (helps with self-signed certs used by some integrations)
 
@@ -13,11 +13,11 @@ import { platform } from 'process'
 import * as ws from 'ws'
 import fs from 'fs'
 import yargs from 'yargs';
-import smartAutoReactNewsletter from './lazackcmds/channelreact.js';
+import smartAutoReactNewsletter from './techexpertcmds/channelreact.js';
 import { spawn } from 'child_process'
 import * as cp from 'child_process'
 import lodash from 'lodash'
-import { LazackBots } from './lazackcmds/lazack.js'
+import { LazackBots } from './techexpertcmds/lazack.js'
 import chalk from 'chalk'
 import syntaxerror from 'syntax-error'
 import os from 'os'
@@ -52,13 +52,13 @@ if (isNaN(PORT) || PORT < 0 || PORT > 65535) {
 console.log(chalk.bold.redBright(`\n✰ Starting Lazack-Device V2 ✰\n`))
 
 // FIX: Use cfonts.say() directly instead of destructuring
-cfonts.say('Lazack-Device V2', {
+cfonts.say('Tech-expert V2', {
   font: 'block',
   align: 'center',
   colors: ['magentaBright']
 })
 
-cfonts.say(`Developed By • Lazack28`, {
+cfonts.say(`Developed By • TECH-EXPERT`, {
   font: 'console',
   align: 'center',
   colors: ['blueBright']
@@ -83,7 +83,7 @@ global.sessions = global.sessions || 'sessions'         // session folder
 global.jadi = global.jadi || 'jadi'                   // jadi bots folder name
 global.yukiJadibts = typeof global.yukiJadibts === 'boolean' ? global.yukiJadibts : true
 global.botNumber = global.botNumber || ''             // optional
-global.owner = global.owner || [['1234567890']]      // default placeholder owner list
+global.owner = global.owner || [['255 711389698']]      // default placeholder owner list
 global.mods = global.mods || []
 global.prems = global.prems || []
 global.APIs = global.APIs || {}
