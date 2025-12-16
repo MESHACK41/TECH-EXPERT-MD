@@ -17,7 +17,7 @@ import smartAutoReactNewsletter from './techexpertcmds/channelreact.js';
 import { spawn } from 'child_process'
 import * as cp from 'child_process'
 import lodash from 'lodash'
-import { LazackBots } from './techexpertcmds/lazack.js'
+import { TechBots } from './techexpertcmds/tech.js'
 import chalk from 'chalk'
 import syntaxerror from 'syntax-error'
 import os from 'os'
@@ -266,7 +266,7 @@ async function connectionUpdate(update) {
     }
   }
   if (connection == 'open') {
-    console.log(chalk.bold.green('\n❀ Lazack Device Connected Successfully ❀'))
+    console.log(chalk.bold.green('\n❀ Tech-Expert Device Connected Successfully ❀'))
     // ADDED: Debug - check if handler is attached
     console.log(chalk.bold.cyan('Connection open, checking handler attachment...'))
     console.log(chalk.bold.cyan('Event listeners count (messages.upsert):'), 
@@ -394,7 +394,7 @@ if (global.yukiJadibts) {
   }
 }
 
-const pluginFolder = global.__dirname(join(__dirname, './lazackcmds/index'))
+const pluginFolder = global.__dirname(join(__dirname, './techcmds/index'))
 const pluginFilter = (filename) => /\.js$/.test(filename)
 global.plugins = {}
 
