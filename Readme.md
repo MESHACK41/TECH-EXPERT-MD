@@ -4,9 +4,9 @@
 
 <img src="https://i.imgur.com/dBaSKWF.gif" height="90" width="100%">
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=F70707&center=true&width=910&height=100&lines=TECH+EXPERT+M+DEVICE" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=F70707&center=true&width=910&height=100&lines=MR+TECH+EXPERT+M+DEVICE" alt="Typing SVG" /></a>
 
-<img src="https://i.imgur.com/dBaSKWF.gif" height="90" width="100%">
+<img src="https://imgur.com/a/zXWVpGK" height="90" width="100%">
 
 ---
 
@@ -38,7 +38,7 @@
 
 ## 🌐 **DEPLOYMENT SITE** 👇
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Lazack28/Lazack-Device)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MESHACK41/TECH-EXPERT-MD)
 
 <a href='https://replit.com/~' target="_blank"><img alt='Deploy Replit' src='https://img.shields.io/badge/DEPLOY REPLIT-black?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
