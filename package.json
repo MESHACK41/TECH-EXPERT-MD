@@ -7,7 +7,7 @@
   "directories": {
     "lib": "lib",
     "src": "src",
-    "plugins": "lazackcmds"
+    "plugins": "Techexpertcmds"
   },
   "scripts": {
     "start": "node index.js",
@@ -18,16 +18,16 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/Lazack28/Lazack-Device",
+  "homepage": "https://github.com/MESHACK41/TECH-EXPERT-MD",
   "author": {
-    "name": "Lazack28"
+    "name": "TECH-EXPERT"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lazack28/Lazack-Device.git"
+    "url": "git+https://github.com/MESHACK41/TECH-EXPERT-MD.git"
   },
   "bugs": {
-    "url": "https://github.com/Lazack28/Lazack-Device/issues"
+    "url": "https://github.com/MESHACK41/TECH-EXPERT-MD"
   },
   "license": "MIT-License",
   "dependencies": {
