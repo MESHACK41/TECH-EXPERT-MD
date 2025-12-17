@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rockstar-ExtraBold&color=F33A6A&lines=WELCOME+TO+TECH+EXPERT+MD+MADE+BY;FREDI;THANKS+FOR+VISITING+MY+REPO)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rockstar-ExtraBold&color=F33A6A&lines=WELCOME+TO+TECH+EXPERT+MD+MADE+BY;TECH+EXPERT;THANKS+FOR+VISITING+MY+REPO)](https://git.io/typing-svg)
 
 <img src="https://files.catbox.moe/s3wv2g.jpg" height="100%" width="100%">
 
