@@ -13,7 +13,7 @@ import smartAutoReactNewsletter from './plugins/channelreact.js';
 import { spawn } from 'child_process'
 import * as cp from 'child_process'
 import lodash from 'lodash'
-import { LazackBots } from './plugins/lazack.js'
+import { LazackBots } from './plugins/fee.js'
 import chalk from 'chalk'
 import syntaxerror from 'syntax-error'
 import os from 'os'
