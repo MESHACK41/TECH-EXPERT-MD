@@ -1,169 +1,97 @@
 // FredieTech tz 🇹🇿 team
-import express from 'express';
-import { Boom } from '@hapi/boom';
-import { 
-    default as makeWASocket, 
-    makeInMemoryStore, 
-    useMultiFileAuthState, 
-    makeCacheableSignalKeyStore, 
-    fetchLatestBaileysVersion,
-    delay as baileysDelay,
-    downloadContentFromMessage,
-    DisconnectReason,
-    getContentType,
-    jidDecode
-} from '@whiskeysockets/baileys';
-import logger from '@whiskeysockets/baileys/lib/Utils/logger';
-import pino from 'pino';
-import axios from 'axios';
-import fs from 'fs-extra';
-import path from 'path';
-import { fileTypeFromBuffer } from 'file-type';
-import { Sticker, StickerTypes } from 'wa-sticker-formatter';
-import chalk from 'chalk';
-import { inflate, deflate } from 'pako';
-import { verifierEtatJid, recupererActionJid } from './lib/antilien.js';
-import { atbverifierEtatJid, atbrecupererActionJid } from './lib/antibot.js';
-import { sendMessage, getContextInfo } from './fredi/context.js';
-import evt from './fredi/ezra.js';
-import { isUserBanned, addUserToBanList, removeUserFromBanList } from './lib/banUser.js';
-import { addGroupToBanList, isGroupBanned, removeGroupFromBanList } from './lib/banGroup.js';
-import { isGroupOnlyAdmin, addGroupToOnlyAdminList, removeGroupFromOnlyAdminList } from './lib/onlyAdmin.js';
-import { reagir } from './fredi/app.js';
-import conf from './set.js';
-
-// Express server
+const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8000;
 app.get("/", (req, res) => {
-    res.send("Tech-Expert-Md IS ALIVE 🫧");
-});
+  res.send("Tech-Expert-Md IS ALIVE 🫧");
+  });
+// Add port listening
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-// Constants
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc); 
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const baileys_1 = __importStar(require("@whiskeysockets/baileys"));
+const logger_1 = __importDefault(require("@whiskeysockets/baileys/lib/Utils/logger"));
+const logger = logger_1.default.child({});
+logger.level = 'silent';
+const pino = require("pino");
+const boom_1 = require("@hapi/boom");
+const conf = require("./set");
+const axios = require("axios");
+let fs = require("fs-extra");
+let path = require("path");
+const FileType = require('file-type');
+const { Sticker, createSticker, StickerTypes } = require('wa-sticker-formatter');
+//import chalk from 'chalk'
+const { verifierEtatJid , recupererActionJid } = require("./lib/antilien");
+const { atbverifierEtatJid , atbrecupererActionJid } = require("./lib/antibot");
+const { sendMessage, getContextInfo } = require('./fredi/context'); 
+let evt = require(__dirname + "/fredi/ezra");
+const {isUserBanned , addUserToBanList , removeUserFromBanList} = require("./lib/banUser");
+const  {addGroupToBanList,isGroupBanned,removeGroupFromBanList} = require("./lib/banGroup");
+const {isGroupOnlyAdmin,addGroupToOnlyAdminList,removeGroupFromOnlyAdminList} = require("./lib/onlyAdmin");
+//const //{loadCmd}=require("/fredi/mesfonctions")
+let { reagir } = require(__dirname + "/fredi/app");
+var session = conf.session.replace(/FEE-XMD%/g,"");
 const prefixe = conf.PREFIXE;
-const more = String.fromCharCode(8206);
-const readmore = more.repeat(4001);
+const more = String.fromCharCode(8206)
+const readmore = more.repeat(4001)
 const BaseUrl = process.env.GITHUB_GIT;
 const Ezraapikey = process.env.BOT_OWNER;
 
-// Fonction pour decompresser session ya zlib base64
-function decompressZlibBase64Session(compressedSession) {
-    try {
-        if (!compressedSession || compressedSession.trim() === '') {
-            console.log("Session is empty");
-            return null;
-        }
-
-        // Remove FEE-XMD% prefix if exists
-        const cleanSession = compressedSession.replace(/FEE-XMD%/g, "");
-        console.log("Cleaned session length:", cleanSession.length);
-
-        // Decode base64
-        const base64Data = atob(cleanSession);
-
-        // Convert to Uint8Array for zlib decompression
-        const uint8Array = new Uint8Array(base64Data.length);
-        for (let i = 0; i < base64Data.length; i++) {
-            uint8Array[i] = base64Data.charCodeAt(i);
-        }
-
-        // Decompress zlib using pako
-        const decompressed = inflate(uint8Array);
-
-        // Convert to string
-        const sessionString = new TextDecoder().decode(decompressed);
-        console.log("Session decompressed successfully, length:", sessionString.length);
-
-        return sessionString;
-    } catch (error) {
-        console.error("Error decompressing session:", error);
-        console.error("Error stack:", error.stack);
-        return null;
-    }
-}
-
-// Fonction pour compress session to zlib base64
-function compressToZlibBase64(sessionData) {
-    try {
-        // Convert string to Uint8Array
-        const encoder = new TextEncoder();
-        const uint8Array = encoder.encode(sessionData);
-
-        // Compress with zlib using pako
-        const compressed = deflate(uint8Array);
-
-        // Convert to base64
-        let binaryString = '';
-        for (let i = 0; i < compressed.length; i++) {
-            binaryString += String.fromCharCode(compressed[i]);
-        }
-
-        const base64Result = btoa(binaryString);
-        console.log("Session compressed to base64, length:", base64Result.length);
-
-        return "FEE-XMD%" + base64Result;
-    } catch (error) {
-        console.error("Error compressing session:", error);
-        return null;
-    }
-}
-
 async function authentification() {
     try {
-        const session = conf.session || '';
-        console.log("Session from config:", session ? "Provided" : "Empty");
-
-        if (!fs.existsSync(path.join(__dirname, "/scan/creds.json"))) {
-            console.log("Connexion en cours avec session base64 zlib...");
-
-            if (session) {
-                // Decompress session
-                const decompressedSession = decompressZlibBase64Session(session);
-
-                if (decompressedSession) {
-                    await fs.writeFileSync(path.join(__dirname, "/scan/creds.json"), decompressedSession, "utf8");
-                    console.log("Session decompressée et enregistrée avec succès");
-                    return true;
-                } else {
-                    console.log("Session invalide ou erreur de décompression");
-                    console.log("QR code sera affiché pour nouvelle connexion");
-                    return false;
-                }
-            } else {
-                console.log("Pas de session fournie, QR code sera affiché");
-                return false;
-            }
-        } else if (fs.existsSync(path.join(__dirname, "/scan/creds.json")) && session && session !== "zokk") {
-            // Mise à jour de la session
-            const decompressedSession = decompressZlibBase64Session(session);
-
-            if (decompressedSession) {
-                await fs.writeFileSync(path.join(__dirname, "/scan/creds.json"), decompressedSession, "utf8");
-                console.log("Session mise à jour avec succès");
-                return true;
-            }
+        //console.log("le data "+data)
+        if (!fs.existsSync(__dirname + "/scan/creds.json")) {
+            console.log("connexion en cour ...");
+            await fs.writeFileSync(__dirname + "/scan/creds.json", atob(session), "utf8");
+            //console.log(session)
         }
-
-        return true;
-    } catch (e) {
-        console.log("Erreur d'authentification: " + e);
-        console.error(e.stack);
-        return false;
+        else if (fs.existsSync(__dirname + "/scan/creds.json") && session != "zokk") {
+            await fs.writeFileSync(__dirname + "/scan/creds.json", atob(session), "utf8");
+        }
+    }
+    catch (e) {
+        console.log("Session Invalid " + e);
+        return;
     }
 }
-
-// Store setup
-const store = makeInMemoryStore({
+authentification();
+const store = (0, baileys_1.makeInMemoryStore)({
     logger: pino().child({ level: "silent", stream: "store" }),
 });
-
-        // Utiliser useMultiFileAuthState pour charger les creds
-        const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, "/scan"));
-
-        // Configuration du socket
+setTimeout(() => {
+authentification();
+    async function main() {
+        const { version, isLatest } = await (0, baileys_1.fetchLatestBaileysVersion)();
+        const { state, saveCreds } = await (0, baileys_1.useMultiFileAuthState)(__dirname + "/scan");
         const sockOptions = {
             version,
             logger: pino({ level: "silent" }),
@@ -175,11 +103,13 @@ const store = makeInMemoryStore({
             syncFullHistory: true,
             generateHighQualityLinkPreview: true,
             markOnlineOnConnect: false,
-            keepAliveIntervalMs: 30000,
-            auth: {
+            keepAliveIntervalMs: 30_000,
+            /* auth: state*/ auth: {
                 creds: state.creds,
-                keys: makeCacheableSignalKeyStore(state.keys, logger),
+                /** caching makes the store faster to send/recv messages */
+                keys: (0, baileys_1.makeCacheableSignalKeyStore)(state.keys, logger),
             },
+            //////////
             getMessage: async (key) => {
                 if (store) {
                     const msg = await store.loadMessage(key.remoteJid, key.id, undefined);
@@ -189,47 +119,12 @@ const store = makeInMemoryStore({
                     conversation: 'An Error Occurred, Repeat Command!'
                 };
             }
-        };
+                };
 
-        // Créer le socket
-        const zk = makeWASocket(sockOptions);
 
-        // Bind store to socket events
-        store.bind(zk.ev);
+   const zk = (0, baileys_1.default)(sockOptions);
+   store.bind(zk.ev);
 
-        // Sauvegarder les creds quand ils changent
-        zk.ev.on('creds.update', saveCreds);
-
-        // Fonction pour sauvegarder la session en format zlib base64
-        async function saveSessionToZlibBase64() {
-            try {
-                if (fs.existsSync(path.join(__dirname, "/scan/creds.json"))) {
-                    const sessionData = await fs.readFileSync(path.join(__dirname, "/scan/creds.json"), "utf8");
-                    const compressedSession = compressToZlibBase64(sessionData);
-
-                    if (compressedSession) {
-                        console.log(chalk.green("\n" + "═".repeat(50)));
-                        console.log(chalk.yellow.bold("SESSION COMPRESSÉE (Zlib Base64):"));
-                        console.log(chalk.green("═".repeat(50)));
-                        console.log(chalk.cyan(compressedSession));
-                        console.log(chalk.green("═".repeat(50)));
-                        console.log(chalk.yellow("Copiez cette session et collez-la dans votre fichier set.js"));
-                        console.log(chalk.green("═".repeat(50) + "\n"));
-
-                        // Optionnel: Sauvegarder dans un fichier
-                        await fs.writeFileSync(
-                            path.join(__dirname, "/session_compressed.txt"),
-                            compressedSession,
-                            "utf8"
-                        );
-
-                        console.log(chalk.green("Session sauvegardée dans: session_compressed.txt"));
-                    }
-                }
-            } catch (error) {
-                console.error("Erreur lors de la sauvegarde de la session:", error);
-            }
-        }
 
 // Function to get the current date and time in Tanzania
 function getCurrentDateTime() {
