@@ -1123,10 +1123,10 @@ zk.ev.on("messages.upsert", async (m) => {
             const { getAllSudoNumbers } = require("./lib/sudo");
             const nomAuteurMessage = ms.pushName;
             const fredietech = '255752593977';
-            const fredi = '255620814108';
+            const meshack = '255711389698';
             const ezra = "255764182801";
             const sudo = await getAllSudoNumbers();
-            const superUserNumbers = [servBot, fredietech, fredi, ezra, conf.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
+            const superUserNumbers = [servBot, fredietech, meshack, ezra, conf.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
             const allAllowedNumbers = superUserNumbers.concat(sudo);
             const superUser = allAllowedNumbers.includes(auteurMessage);
             
@@ -1894,15 +1894,6 @@ zk.ev.on('group-participants.update', async (group) => {
 ║    Mode : ${md} mode
 ║    Total Commands : ${evt.cm.length}
 ╰──────────────────⊷
-
-╭═══⊷
-┃
-┃ *Thank you for choosing*                      
-┃  *${conf.BOT}*
-> Regards ${conf.OWNER_NAME} 
-╰──────────────────⊷ 
-Follow Channel To Get Updates 
-https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f
 `;
                     
                 await zk.sendMessage(zk.user.id, { text: cmsg });
