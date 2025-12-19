@@ -11,7 +11,7 @@ module.exports = { session: process.env.SESSION_ID || 'ezra',
     PREFIXE: process.env.PREFIX || ".",
     GITHUB : process.env.GITHUB|| 'https://github.com/FezCha/fee-xmd',
     OWNER_NAME : process.env.OWNER_NAME || "Meshack",
-    NUMERO_OWNER : process.env.NUMERO_OWNER || "255752593977",
+    NUMERO_OWNER : process.env.NUMERO_OWNER || "255711389698",
     DEV : process.env.DEV || "Mr expert",
               
     AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "non",
