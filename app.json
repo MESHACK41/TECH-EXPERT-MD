@@ -71,7 +71,7 @@
     },
     "AUTO_STATUS_TEXT": {
       "description": "type your genuine status message",
-      "value": "💲YOUR STATUS VIEWED BY 💦FEE-XMD💨 SUCCESSFUL 😇✅✅",
+      "value": "💲YOUR STATUS VIEWED BY TECH EXPERT MD SUCCESSFUL 😇✅✅",
       "required": false
     },
     "AUTO_STATUS_REPLY": {
@@ -174,4 +174,5 @@
   ]
 
 }
+
 
