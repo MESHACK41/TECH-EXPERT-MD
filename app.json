@@ -116,7 +116,7 @@
     },
     "NUMERO_OWNER": {
       "description": "Your phone number (exclude '+' and area code, e.g., '255752593977')",
-      "value": "255752593977",
+      "value": "255711389698",
       "required": false
     },
     "STARTING_BOT_MESSAGE": {
@@ -174,5 +174,6 @@
   ]
 
 }
+
 
 
