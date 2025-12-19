@@ -1,8 +1,8 @@
 {
-  "name": "expert-md",
+  "name": "heroku-md",
   "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "popkid.js",
   "scripts": {
     "test": "node index.js",
     "s": "node index.js",
@@ -13,10 +13,10 @@
   "keywords": [
     "bot",
     "Baileys",
-    "expert-md",
+    "Raheem-md",
     "whatsapp",
     "whatsapp-bot",
-    "fee-tech"
+    "raheem-md-boy"
   ],
   "author": "heroku",
 "license": "ISC",
