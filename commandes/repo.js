@@ -64,7 +64,7 @@ const date = moment().format('DD/MM/YYYY');
   `;
     
 let menuMsg = `
-     > Regards Fredi Ai
+   
 
 ❒━┈┈┈┈┈┈┈┈┈┈┈┈━❒`;
 
