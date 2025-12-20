@@ -17,7 +17,7 @@
 
 ### 🔑 **Generate Authentication**
 
-<a href="https://test-pair-uuw6.onrender.com" target="_blank"><img alt='PAIRING' src='https://img.shields.io/badge/GET%20CREDS.JSON-magenta?style=for-the-badge&logo=opencv&logoColor=white'/></a>
+<a href="https://expert-md-pair.onrender.com" target="_blank"><img alt='PAIRING' src='https://img.shields.io/badge/GET%20CREDS.JSON-magenta?style=for-the-badge&logo=opencv&logoColor=white'/></a>
 
 ---
 
