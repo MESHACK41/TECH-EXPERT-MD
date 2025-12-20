@@ -30,14 +30,14 @@ zokou({ nomCom: "menu", categorie: "General" }, async (dest, zk, commandOptions)
 
     let headerMessage = `
 
-╭┈━❰ *AVAILABLE MENUS* ❱━┈╮  
+╭┈━❰ *EXPERT MD* ❱━┈╮  
 ┃ ❒  ▸ *MENU* 🧷               
 ┃ =======================
 ┃ ❒  ▸ *PLUGINS*  : ${cm.length}   
 ┃ ❒  ▸ *RAM*      : ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}    
 ┃ ❒  ▸ *SYSTEM* 🤖  : ${os.platform()}         
 ┃ ❒  ▸ *THEME*  : FEE  🔥
-╰━┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈━╯  
+╰━┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈━╯  
 
 📌 _*Type the command to proceed.*_  
 ════════════════════════  
@@ -57,8 +57,6 @@ zokou({ nomCom: "menu", categorie: "General" }, async (dest, zk, commandOptions)
        
     fullMenu += `> Regards Fredi Ai\n`;
 
-    const imageOrVideoUrl = mybotpic();
-    const musicUrl = "https://files.catbox.moe/uv6fb5.mp3";
 
     try {
         // If it's a video or gif
@@ -82,13 +80,6 @@ zokou({ nomCom: "menu", categorie: "General" }, async (dest, zk, commandOptions)
         else {
             await repondre(headerMessage + fullMenu);
         }
-
-        // Send background music after menu
-        await zk.sendMessage(dest, {
-            audio: { url: musicUrl },
-            mimetype: 'audio/mp4',
-            ptt: false
-        }, { quoted: ms });
 
     } catch (error) {
         console.log("🥵🥵 Menu error: " + error);
