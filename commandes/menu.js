@@ -29,20 +29,14 @@ zokou({ nomCom: "menu", categorie: "General" }, async (dest, zk, commandOptions)
     const currentDate = moment().format('DD/MM/YYYY');
 
     let headerMessage = `
-╭─────────────────╮  
-│        *𝐇𝐄𝐑𝐎𝐊𝐔-𝐁𝐎𝐓*     │  
-│      *BEST WHATSAPP BOT*  │  
-╰─────────────────╯  
 
 ╭┈━❰ *AVAILABLE MENUS* ❱━┈╮  
 ┃ ❒  ▸ *MENU* 🧷               
-┃ ❒  ▸ *MENU2*   ⚒️              
-┃ ❒  ▸ *BUGMENU* 🦠
 ┃ =======================
 ┃ ❒  ▸ *PLUGINS*  : ${cm.length}   
 ┃ ❒  ▸ *RAM*      : ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}    
 ┃ ❒  ▸ *SYSTEM* 🤖  : ${os.platform()}         
-┃ ❒  ▸ *THEME*  : FEE_TECH  🔥
+┃ ❒  ▸ *THEME*  : FEE  🔥
 ╰━┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈━╯  
 
 📌 _*Type the command to proceed.*_  
@@ -64,7 +58,7 @@ zokou({ nomCom: "menu", categorie: "General" }, async (dest, zk, commandOptions)
     fullMenu += `> Regards Fredi Ai\n`;
 
     const imageOrVideoUrl = mybotpic();
-    const musicUrl = "https://files.catbox.moe/s3wv2g.jpg";
+    const musicUrl = "https://files.catbox.moe/uv6fb5.mp3";
 
     try {
         // If it's a video or gif
