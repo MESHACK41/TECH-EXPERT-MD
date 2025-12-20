@@ -37,7 +37,7 @@
 
 ## 🌐 **DEPLOYMENT SITE** 👇
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/FezChat/TECH-EXPERT)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MESHACK41/TECH-EXPERT-MD)
 
 <a href='https://replit.com/~' target="_blank"><img alt='Deploy Replit' src='https://img.shields.io/badge/DEPLOY REPLIT-black?style=for-the-badge&logo=scan&logoColor=white&labelColor=black&color=black'/></a>
 
